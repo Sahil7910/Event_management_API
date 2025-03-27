@@ -74,6 +74,25 @@ attendee_id
 102
 103
 ```
+- **API Endpoint:**
+  ```sh
+  POST /attendees/bulk-checkin/
+  ```
+
+- **Request Headers:**
+  ```sh
+  Content-Type: multipart/form-data
+  Authorization: Bearer <your_token>
+  ```
+- **Response Example:**
+  ```sh
+  {
+  "message": "Bulk check-in successful",
+  "checked_in": [101, 102, 103],
+  "failed": []
+}
+  ```
+
 
 
 
