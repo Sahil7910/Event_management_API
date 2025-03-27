@@ -30,7 +30,7 @@ app.dependency_overrides[get_db] = override_get_db
 client = TestClient(app)
 
 @pytest.fixture
-def db():
+def test_db():
     """Creates a fresh database for each test."""
     Base.metadata.drop_all(bind=engine)  # Drop all tables (clears previous data)
     Base.metadata.create_all(bind=engine)  # Recreate tables
@@ -47,12 +47,12 @@ def get_test_token():
     test_user_data = {"sub": "testuser", "role": "admin"}  # Adjust according to your system
     return create_access_token(test_user_data, expires_delta=timedelta(hours=1))
 
-def test_registration_limit(db: Session):
+def test_registration_limit(test_db: Session):
 
 
-    db.query(Event).filter(Event.event_id == 1).delete()
-    db.query(Attendee).filter(Attendee.event_id == 1).delete()
-    db.commit()
+    test_db.query(Event).filter(Event.event_id == 1).delete()
+    test_db.query(Attendee).filter(Attendee.event_id == 1).delete()
+    test_db.commit()
 
 
     event = Event(
@@ -64,25 +64,25 @@ def test_registration_limit(db: Session):
         location="Test Venue",
         status=EventStatus.SCHEDULED
     )
-    db.add(event)
-    db.commit()
-    db.refresh(event)
+    test_db.add(event)
+    test_db.commit()
+    test_db.refresh(event)
 
 
-    db.add(Attendee(attendee_id=1, first_name="John", last_name="Doe", email="john@example.com", phone_number="1234567890", event_id=1))
-    db.add(Attendee(attendee_id=2, first_name="Jane", last_name="Smith", email="jane@example.com", phone_number="1234567890", event_id=1))
-    db.commit()
+    test_db.add(Attendee(attendee_id=1, first_name="John", last_name="Doe", email="john@example.com", phone_number="1234567890", event_id=1))
+    test_db.add(Attendee(attendee_id=2, first_name="Jane", last_name="Smith", email="jane@example.com", phone_number="1234567890", event_id=1))
+    test_db.commit()
 
 
     with pytest.raises(Exception) as exc_info:
-        register_attendee(1, Attendee(first_name="Mike", last_name="Brown", email="mike@example.com"), db)
+        register_attendee(1, Attendee(first_name="Mike", last_name="Brown", email="mike@example.com"), test_db)
 
     assert "Event is fully booked" in str(exc_info.value)
 
 
 
 
-def test_successful_checkin(db: Session):
+def test_successful_checkin(test_db: Session):
     """Creates an event and an attendee, then performs a successful check-in."""
 
     token = get_test_token()
@@ -99,9 +99,9 @@ def test_successful_checkin(db: Session):
         end_time=datetime.utcnow() + timedelta(hours=1),
         status=EventStatus.SCHEDULED
     )
-    db.add(event)
-    db.commit()
-    db.refresh(event)
+    test_db.add(event)
+    test_db.commit()
+    test_db.refresh(event)
 
     # Create Attendee
     attendee = Attendee(
@@ -113,9 +113,9 @@ def test_successful_checkin(db: Session):
         event_id=event.event_id,
         check_in_status=False
     )
-    db.add(attendee)
-    db.commit()
-    db.refresh(attendee)
+    test_db.add(attendee)
+    test_db.commit()
+    test_db.refresh(attendee)
 
     # Perform Check-in
     response = client.put(
@@ -127,16 +127,16 @@ def test_successful_checkin(db: Session):
     assert response.json()["message"] == "Attendee checked in successfully"
 
 
-    db.expire_all()
+    test_db.expire_all()
 
 
-    updated_attendee = db.query(Attendee).filter(Attendee.attendee_id == attendee.attendee_id).first()
+    updated_attendee = test_db.query(Attendee).filter(Attendee.attendee_id == attendee.attendee_id).first()
     assert updated_attendee.check_in_status is True
 
 
 
 
-def test_event_status_updates(db: Session):
+def test_event_status_updates(test_db: Session):
 
 
     # Create an event that is currently scheduled
@@ -150,27 +150,27 @@ def test_event_status_updates(db: Session):
         end_time=datetime.utcnow() + timedelta(seconds=5),    # Ends in 5 seconds
         status=EventStatus.SCHEDULED
     )
-    db.add(event)
-    db.commit()
-    db.refresh(event)
+    test_db.add(event)
+    test_db.commit()
+    test_db.refresh(event)
 
     # Ensure initial status is "SCHEDULED"
     assert event.status == EventStatus.SCHEDULED
 
 
     sleep(3)
-    update_event_status(db)
-    db.expire_all()
+    update_event_status(test_db)
+    test_db.expire_all()
 
     # Fetch updated event
-    updated_event = db.query(Event).filter(Event.event_id == event.event_id).first()
+    updated_event = test_db.query(Event).filter(Event.event_id == event.event_id).first()
     assert updated_event.status == EventStatus.ONGOING
 
 
     sleep(3)
-    update_event_status(db)
-    db.expire_all()
+    update_event_status(test_db)
+    test_db.expire_all()
 
     # Fetch updated event again
-    updated_event = db.query(Event).filter(Event.event_id == event.event_id).first()
+    updated_event = test_db.query(Event).filter(Event.event_id == event.event_id).first()
     assert updated_event.status == EventStatus.COMPLETED  # Should be COMPLETED now

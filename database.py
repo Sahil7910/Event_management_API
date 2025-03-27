@@ -3,7 +3,7 @@ from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Define Database URL (SQLite for now)
-DATABASE_URL = "sqlite:///./events.db"
+DATABASE_URL = "sqlite:///./events_api.db"
 
 # Create Database Engine
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})

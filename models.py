@@ -15,7 +15,7 @@ class User(Base):
 
 # Enum for Event Status
 class EventStatus(enum.Enum):  # ✅ Correct way to define an Enum
-    UPCOMING = "upcoming"
+    CANCELED = "canceled"
     ONGOING = "ongoing"
     COMPLETED = "completed"
     SCHEDULED = "scheduled"
@@ -32,7 +32,7 @@ class Event(Base):
     end_time = Column(DateTime, nullable=False)
     location = Column(String, nullable=False)
     max_attendees = Column(Integer, nullable=False)
-    status = Column(Enum(EventStatus), default=EventStatus.UPCOMING)
+    status = Column(Enum(EventStatus), default=EventStatus.SCHEDULED)
 
     attendees = relationship("Attendee", back_populates="event")  # Ensures `event.attendees` works
 

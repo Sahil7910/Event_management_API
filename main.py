@@ -40,21 +40,11 @@ def update_event_status(db: Session):
     db.commit()
 
 
-@app.get("/events/{event_id}")
-def get_event(event_id: int, db: Session = Depends(get_db)):
-    event = db.query(Event).filter(Event.event_id == event_id).first()
-    if not event:
-        raise HTTPException(status_code=404, detail="Event not found")
-
-    update_event_status(event, db)
-
-    return event
-
 
 
 @app.post("/events/", dependencies=[Depends(get_current_user)], status_code=201)
 def create_event(event: EventCreate, db: Session = Depends(get_db)):
-    new_event = Event(**event.dict(), status=EventStatus.scheduled)
+    new_event = Event(**event.dict(), status=EventStatus.SCHEDULED)
     db.add(new_event)
     db.commit()
     db.refresh(new_event)
