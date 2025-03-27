@@ -6,6 +6,7 @@ This is a **FastAPI-based** Event Management API that allows users to create eve
 - **Event Management**: Create, update, List events.
 - **Attendee Registration**: Register attendees for events.
 - **Check-in System**: Allow attendees to check in to an event.
+- **Bulk Check-in**: Upload a CSV file to check in multiple attendees at once
 - **Authentication**: Secure access using JWT tokens.
 
 ## 🏗️ Tech Stack
