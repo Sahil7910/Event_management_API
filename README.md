@@ -52,6 +52,17 @@ pytest
 - **Uses JWT tokens for authentication.**
 - **Get a token via /token endpoint.**
 
+### API Endpoints
+| Method       | EndPoint          | Description                                   |
+|--------------|------------------ |-----------------------------------------------|
+| `Event`      | `event_id`        | `Unique identifier for event  |
+|              | `name`            | `TEXT`          | Event name                   |
+|              | `location`        | `TEXT`          | Event location               |
+|              | `start_time`      | `DATETIME`      | Event start time             |
+|              | `end_time`        | `DATETIME`      | Event end time               |
+|              | `max_attendees`   | `INTEGER`       | Max number of attendees      |
+|              | `status`          | `TEXT`          | Event status                 |
+
 
 
  
