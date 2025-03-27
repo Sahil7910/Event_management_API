@@ -61,13 +61,29 @@ To use protected endpoints, you must first register an account.
     "password": "securepassword"
   }
   ```
-  -**Response (JSON):**
+  - **Response (JSON):**
     ```json
     {
       "message": "User registered successfully"
     }
     ```
-
+### Login and Get Access Token
+After registering, log in to receive an access token.
+- **Endpoint: POST /token**
+- **Request Body (form-data):**
+  ```ini
+  username=testuser
+  password=securepassword
+  ```
+- **Response (JSON):**
+  ```json
+    {
+      "access_token": "your_generated_token",
+      "token_type": "bearer"
+    }
+  ```
+  - **Note: Save the access_token. You'll need it to authenticate API requests.**
+  
 
 ### API Endpoints
 
