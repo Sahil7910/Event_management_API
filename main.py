@@ -195,27 +195,24 @@ def protected_route(user: str = Depends(get_current_user)):
 
 
 
-@app.post("/events/{event_id}/bulk_checkin/", dependencies=[Depends(get_current_user)])
+@app.post("/events/bulk_checkin/{event_id}/", dependencies=[Depends(get_current_user)])
 def bulk_checkin(event_id: int, file: UploadFile = File(...), db: Session = Depends(get_db)):
     event = db.query(Event).filter(Event.event_id == event_id).first()
     if not event:
         raise HTTPException(status_code=404, detail="Event not found")
 
-
     df = pd.read_csv(file.file)
 
     # Ensure required column exists
-    if "email" not in df.columns:
-        raise HTTPException(status_code=400, detail="CSV must contain an 'email' column")
-
+    if "attendee_id" not in df.columns:
+        raise HTTPException(status_code=400, detail="CSV must contain an 'attendee_id' column")
 
     checked_in_count = 0
-    for email in df["email"]:
-        attendee = db.query(Attendee).filter(Attendee.email == email, Attendee.event_id == event_id).first()
+    for attendee_id in df["attendee_id"]:
+        attendee = db.query(Attendee).filter(Attendee.attendee_id == attendee_id, Attendee.event_id == event_id).first()
         if attendee and not attendee.check_in_status:
             attendee.check_in_status = True
             db.commit()
             checked_in_count += 1
 
     return {"message": f"{checked_in_count} attendees checked in successfully!"}
-
