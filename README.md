@@ -53,14 +53,14 @@ pytest
 - **Get a token via /token endpoint.**
 
 ### API Endpoints
-| Method       | EndPoint          | Description                                   |
-|--------------|------------------ |-----------------------------------------------|
-| `POST`       | `/events/`        | Create a new event                 |
-|  `GET`       | `/events/`            | Get all events                                        |
-|  `POST`      | `/attendees/register/`        | Register an attendee                                        |
-|  `PUT`       | `/attendees/checkin/{attendee_id}/`      | Check in an attendee                                  |
-|  `POST`      | `/attendees/bulk-checkin/`        | 	Bulk check-in attendees via CSV                                    |
-|  `GET`       | `/attendees/{attendee_id}/`   | Get attendee details                                    |
+| Method       | EndPoint                           | Description                        |
+|--------------|------------------ -----------------|------------------------------------|
+| `POST`       | `/events/`                         | Create a new event                 |
+|  `GET`       | `/events/`                         | Get all events                     |
+|  `POST`      | `/attendees/register/`             | Register an attendee               |
+|  `PUT`       | `/attendees/checkin/{attendee_id}/`| Check in an attendee               |
+|  `POST`      | `/attendees/bulk-checkin/`         | 	Bulk check-in attendees via CSV   |
+|  `GET`       | `/attendees/{attendee_id}/`        | Get attendee details               |
 
 
 
