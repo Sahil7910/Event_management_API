@@ -90,8 +90,8 @@ attendee_id
   "message": "Bulk check-in successful",
   "checked_in": [101, 102, 103],
   "failed": []
-}
-  ```
+  }
+  
 
 
 
