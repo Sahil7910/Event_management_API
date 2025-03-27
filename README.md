@@ -55,12 +55,12 @@ pytest
 ### API Endpoints
 | Method       | EndPoint          | Description                                   |
 |--------------|------------------ |-----------------------------------------------|
-| `POST`       | `event_id`        | `Unique identifier for event`                 |
-|  `GET`       | `name`            | `TEXT`                                        |
-|  `POST`      | `location`        | `TEXT`                                        |
-|  `PUT`       | `start_time`      | `DATETIME`                                    |
-|  `POST`      | `end_time`        | `DATETIME`                                    |
-|  `GET`       | `max_attendees`   | `INTEGER`                                     |
+| `POST`       | `/events/`        | Create a new event                 |
+|  `GET`       | `/events/`            | Get all events                                        |
+|  `POST`      | `/attendees/register/`        | Register an attendee                                        |
+|  `PUT`       | `/attendees/checkin/{attendee_id}/`      | Check in an attendee                                  |
+|  `POST`      | `/attendees/bulk-checkin/`        | 	Bulk check-in attendees via CSV                                    |
+|  `GET`       | `/attendees/{attendee_id}/`   | Get attendee details                                    |
 
 
 
