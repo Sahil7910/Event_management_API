@@ -3,7 +3,7 @@
 This is a **FastAPI-based** Event Management API that allows users to create events, register attendees, and track check-ins.
 
 ## 🚀 Features
-- **Event Management**: Create, update, delete events.
+- **Event Management**: Create, update, List events.
 - **Attendee Registration**: Register attendees for events.
 - **Check-in System**: Allow attendees to check in to an event.
 - **Authentication**: Secure access using JWT tokens.
