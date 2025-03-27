@@ -18,7 +18,7 @@ This is a **FastAPI-based** Event Management API that allows users to create eve
 
 ## 📦 Installation & Setup
 
-### 1️⃣ Clone the repository
+###  Clone the repository
 ```sh
 git clone https://github.com/Sahil7910/Event_management_API.git
 cd Event_management_API
@@ -32,16 +32,26 @@ pip install -r requirements.txt
 
 ```
 
-### 3️⃣ Set Up Database
+###  Set Up Database
 ```sh
 python database.py
 ```
 
-### 4️⃣ Run the Server
+###  Run the Server
 ```sh
 uvicorn main:app --reload
 ```
 The API will be available at: http://127.0.0.1:8000
+
+### Running Tests
+```sh
+pytest
+```
+
+### Authentication
+-**Uses JWT tokens for authentication.**
+-**Get a token via /token endpoint.**
+
 
 
  
