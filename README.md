@@ -43,10 +43,13 @@ uvicorn main:app --reload
 ```
 The API will be available at: http://127.0.0.1:8000
 
+
 ### Running Tests
 ```sh
 pytest -v tests/test_event.py
 ```
+
+
 
 ## User Authentication
 ### Register a New User
@@ -61,12 +64,16 @@ To use protected endpoints, you must first register an account.
     "password": "securepassword"
   }
   ```
+
+  
   - **Response (JSON):**
     ```json
     {
       "message": "User registered successfully"
     }
     ```
+
+    
 ### Login and Get Access Token
 After registering, log in to receive an access token.
 - **Endpoint: POST /token**
@@ -75,6 +82,8 @@ After registering, log in to receive an access token.
   username=testuser
   password=securepassword
   ```
+
+  
 - **Response (JSON):**
   ```json
     {
@@ -82,8 +91,10 @@ After registering, log in to receive an access token.
       "token_type": "bearer"
     }
   ```
+  
   - **Note: Save the access_token. You'll need it to authenticate API requests.**
- 
+
+
   ### Use Token for Authenticated Requests
   - **For protected endpoints, include the token in the Authorization header:**
     ```sh
@@ -93,6 +104,8 @@ After registering, log in to receive an access token.
     ```sh
     curl -H "Authorization: Bearer your_generated_token" -X GET http://127.0.0.1:8000/events/
     ```
+
+
   
 
 ### API Endpoints
