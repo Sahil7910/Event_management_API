@@ -32,9 +32,16 @@ pip install -r requirements.txt
 
 ```
 
-###3️⃣ Set Up Database
+### 3️⃣ Set Up Database
 ```sh
 python database.py
 ```
+
+### 4️⃣ Run the Server
+```sh
+uvicorn main:app --reload
+```
+The API will be available at: http://127.0.0.1:8000
+
 
  
