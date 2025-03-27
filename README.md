@@ -60,7 +60,13 @@ To use protected endpoints, you must first register an account.
     "email": "test@example.com",
     "password": "securepassword"
   }
-
+  ```
+  -**Response (JSON):**
+    ```json
+    {
+      "message": "User registered successfully"
+    }
+    ```
 
 
 ### API Endpoints
