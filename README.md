@@ -49,8 +49,8 @@ pytest
 ```
 
 ### Authentication
--**Uses JWT tokens for authentication.**
--**Get a token via /token endpoint.**
+- **Uses JWT tokens for authentication.**
+- **Get a token via /token endpoint.**
 
 
 
