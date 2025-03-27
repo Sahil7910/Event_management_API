@@ -55,13 +55,13 @@ pytest
 ### API Endpoints
 | Method       | EndPoint          | Description                                   |
 |--------------|------------------ |-----------------------------------------------|
-| `Event`      | `event_id`        | `Unique identifier for event  |
-|              | `name`            | `TEXT`          | Event name                   |
-|              | `location`        | `TEXT`          | Event location               |
-|              | `start_time`      | `DATETIME`      | Event start time             |
-|              | `end_time`        | `DATETIME`      | Event end time               |
-|              | `max_attendees`   | `INTEGER`       | Max number of attendees      |
-|              | `status`          | `TEXT`          | Event status                 |
+| `POST`       | `event_id`        | `Unique identifier for event`                 |
+|  `GET`       | `name`            | `TEXT`                                        |
+|  `POST`      | `location`        | `TEXT`                                        |
+|  `PUT`       | `start_time`      | `DATETIME`                                    |
+|  `POST`      | `end_time`        | `DATETIME`                                    |
+|  `GET`       | `max_attendees`   | `INTEGER`                                     |
+
 
 
 
