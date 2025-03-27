@@ -65,6 +65,16 @@ pytest
 | `GET`   | `/attendees/{attendee_id}/`           | Get attendee details                 |
 
 
+### Bulk Attendee Check-in via CSV
+- **Upload a CSV file containing attendee IDs for check-in.**
+- **Example CSV format:**
+```sh
+attendee_id
+101
+102
+103
+```
+
 
 
 
