@@ -91,10 +91,3 @@ attendee_id
   "checked_in": [101, 102, 103],
   "failed": []
   }
-  
-
-
-
-
-
- 
