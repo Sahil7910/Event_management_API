@@ -22,10 +22,19 @@ This is a **FastAPI-based** Event Management API that allows users to create eve
 ```sh
 git clone https://github.com/Sahil7910/Event_management_API.git
 cd Event_management_API
+```
 
 ### Create a Virtual Environment & Install Dependencies
 ```sh
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
+
+```
+
+###3️⃣ Set Up Database
+```sh
+python database.py
+```
+
  
