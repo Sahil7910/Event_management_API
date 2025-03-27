@@ -11,9 +11,9 @@ This is a **FastAPI-based** Event Management API that allows users to create eve
 ## 🏗️ Tech Stack
 - **FastAPI** 🚀 (for API development)
 - **SQLAlchemy** (for database ORM)
-- **SQLite / PostgreSQL** (for data storage)
+- **SQLite** (for data storage)
 - **Pytest** (for testing)
-- **Docker** (for containerization) *(optional)*
+
 
 ## 📦 Installation & Setup
 
