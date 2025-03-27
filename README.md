@@ -48,9 +48,20 @@ The API will be available at: http://127.0.0.1:8000
 pytest -v tests/test_event.py
 ```
 
-### Authentication
-- **Uses JWT tokens for authentication.**
-- **Get a token via /token endpoint.**
+## User Authentication
+### Register a New User
+To use protected endpoints, you must first register an account.
+
+- **Endpoint:** `POST /register/`
+- **Request Body (JSON):**
+  ```json
+  {
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "securepassword"
+  }
+
+
 
 ### API Endpoints
 
