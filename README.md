@@ -83,6 +83,16 @@ After registering, log in to receive an access token.
     }
   ```
   - **Note: Save the access_token. You'll need it to authenticate API requests.**
+ 
+  ### Use Token for Authenticated Requests
+  - **For protected endpoints, include the token in the Authorization header:**
+    ```sh
+    Authorization: Bearer your_generated_token
+    ```
+    -**Example cURL request:**
+    ```sh
+    curl -H "Authorization: Bearer your_generated_token" -X GET http://127.0.0.1:8000/events/
+    ```
   
 
 ### API Endpoints
