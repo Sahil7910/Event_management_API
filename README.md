@@ -61,7 +61,7 @@ pytest
 | `GET`   | `/events/`                             | Get all events                       |
 | `POST`  | `/attendees/register/`                | Register an attendee                 |
 | `PUT`   | `/attendees/checkin/{attendee_id}/`   | Check in an attendee                 |
-| `POST`  | `/attendees/bulk-checkin/`            | Bulk check-in attendees via CSV      |
+| `POST`  | `/events/bulk_checkin/{event_id}/`            | Bulk check-in attendees via CSV      |
 | `GET`   | `/attendees/{attendee_id}/`           | Get attendee details                 |
 
 
